@@ -9,7 +9,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "gsafetyCocopodsTest"
-  spec.version      = "0.0.3"
+  spec.version      = "0.0.4"
   spec.summary      = "this is a test of gsafety-cocopodsTest."
   spec.description  = <<-DESC
 			I just wants test it, I do not know weather it will success
@@ -23,10 +23,11 @@ Pod::Spec.new do |spec|
   spec.platform     = :ios, "12.0"
   spec.swift_version = "5"
 
-  spec.source       = { :git => "https://github.com/xuyonglin1/gsafety-cocopodsTest.git", :tag => "0.0.3" }
+  spec.source       = { :git => "https://github.com/xuyonglin1/gsafety-cocopodsTest.git", :tag => "#{spec.version}" }
 
 
-  spec.source_files  = "CocopodTest/*","CocopodTest/**/*", "CocopodTest/**/**/*", "CocopodTest/**/**/**/*"
+  spec.source_files  = "CocopodTest/*","CocopodTest/**","CocopodTest/**/*", "CocopodTest/**/**/*", "CocopodTest/**/**/**/*", "CocopodTest/**/**/**/**/*", "CocopodTest/**/**/**/**/**/*",
+"CocopodTest/**/**/**/**/**/**/*","CocopodTest/**/**/**/**/**/**/**/*"
   # spec.exclude_files = "Classes/Exclude"
 
   # spec.public_header_files = "Classes/**/*.h"
