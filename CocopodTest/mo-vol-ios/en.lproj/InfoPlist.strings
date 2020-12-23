@@ -1,0 +1,25 @@
+/* 
+  InfoPlist.strings
+  mo-vol-ios
+
+  Created by Gsafety on 2020/11/19.
+  Copyright © 2020 Gsafety. All rights reserved.
+*/
+CFBundleDisplayName = "MOVOL";
+NSBluetoothAlwaysUsageDescription = "App needs your permission to allow Bluetooth to communicate with device";
+NSBluetoothPeripheralUsageDescription = "App needs your permission to allow Bluetooth to communicate with device";
+NSCalendarsUsageDescription = "App needs your permission to access calendar";
+NSCameraUsageDescription = "App needs your permission to use camera function";
+NSContactsUsageDescription = "App needs your permission to access your address book";
+NSLocationUsageDescription = "App needs your permission to access the location";
+NSLocationAlwaysUsageDescription ="App needs your consent to enable location function all the time";
+NSLocationWhenInUseUsageDescription = "App needs your consent to enable location function all the time";
+NSMicrophoneUsageDescription ="App needs your permission to access the microphone";
+NSPhotoLibraryAddUsageDescription = "App needs your permission to save photos to album";
+NSPhotoLibraryUsageDescription = "App needs your permission to access the album";
+NSSpeechRecognitionUsageDescription = "App needs your consent to use speech recognition";
+NSAppleMusicUsageDescription = "App needs your permission to access multimedia";
+NSHealthShareUsageDescription = "App needs your permission to access health sharing";
+NSHealthUpdateUsageDescription = "App needs your permission to access health updates";
+NSMotionUsageDescription = "App needs your permission to access sports and fitness";
+NSRemindersUsageDescription = "App needs your permission to access the reminders";

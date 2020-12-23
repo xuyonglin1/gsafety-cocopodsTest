@@ -1,0 +1,28 @@
+/* 
+  InfoPlist.strings
+  mo-vol-ios
+  配置国际化
+  Created by 许永霖 on 2020/11/19.
+  Copyright © 2020 Gsafety. All rights reserved.
+ 
+  参考：https://www.dazhuanlan.com/2020/02/02/5e362f191fd17/
+*/
+CFBundleDisplayName = "民防志愿者";
+NSBluetoothAlwaysUsageDescription = "需要您的同意, APP才能允许蓝牙与设备通信";
+NSBluetoothPeripheralUsageDescription ="需要您的同意, APP才能访问蓝牙";
+NSCalendarsUsageDescription ="需要您的同意, APP才能访问日历";
+NSCameraUsageDescription ="需要您的同意,APP才能访问相机";
+NSContactsUsageDescription ="需要您的同意, APP才能访问您的通讯簿";
+NSLocationUsageDescription = "需要您的同意, APP才能访问位置";
+NSLocationAlwaysUsageDescription ="需要您的同意, APP才能始终访问位置";
+NSLocationWhenInUseUsageDescription ="需要您的同意, APP才能在使用期间访问位置";
+NSMicrophoneUsageDescription ="需要您的同意,APP才能访问麦克风";
+NSPhotoLibraryAddUsageDescription ="需要您同意，App才能添加图片到相册";
+NSPhotoLibraryUsageDescription ="需要您的同意,APP才能访问相册";
+NSSpeechRecognitionUsageDescription ="需要您的同意, APP才能使用语音识别";
+NSAppleMusicUsageDescription = "需要您的同意, APP才能访问媒体资料库";
+NSHealthShareUsageDescription = "需要您的同意, APP才能访问健康分享";
+NSHealthUpdateUsageDescription = "需要您的同意, APP才能访问健康更新";
+NSMotionUsageDescription = "需要您的同意, APP才能访问运动与健身";
+NSRemindersUsageDescription = "需要您的同意, APP才能访问提醒事项";
+

@@ -1,0 +1,6 @@
+framework module Pods_mo_vol_ios_mo_vol_iosUITests {
+  umbrella header "Pods-mo-vol-ios-mo-vol-iosUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

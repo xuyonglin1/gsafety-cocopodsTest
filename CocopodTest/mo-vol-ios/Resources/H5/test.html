@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cmn-Hans">
+    <meta charset="UTF-8">
+    <title>DSBridge Test</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=0.5,user-scalable=no"/>
+    <!--require dsbridge init js-->
+    <script src="https://cdn.jsdelivr.net/npm/dsbridge/dist/dsbridge.js"> </script>
+</head>
+<style>
+    .btn {
+        text-align: center;
+        background: #eee;
+        color: #000;
+        padding: 20px;
+        margin: 30px;
+        font-size: 24px;
+        border-radius: 4px;
+        box-shadow: 4px 2px 10px #999;
+    }
+
+    .btn:active {
+        opacity: .7;
+        box-shadow: 4px 2px 10px #555;
+    }
+
+
+
+</style>
+<body>
+<h1>相机</h1>
+<div class="btn" onclick="takePicture()">拍照</div>
+<div class="btn" onclick="takeVideo()">录像</div>
+<div class="btn" onclick="getAlbum()">打开相册功能</div>
+<div class="btn" onclick="openScan()">扫码功能</div>
+<div class="btn" onclick="scanCodeByAlbum()">扫码从相册选择</div>
+<h1>定位</h1>
+<div class="btn" onclick="getMaps()">获取本级地图功能</div>
+<div class="btn" onclick="openMap()">打开地图功能</div>
+<div class="btn" onclick="getLocation()">获取定位功能</div>
+<h1>文件</h1>
+<div class="btn" onclick="chooseFile()">打开沙盒目录</div>
+<div class="btn" onclick="openFile()">打开文件功能</div>
+<div class="btn" onclick="saveWithFile()">往沙盒写入文件</div>
+<div class="btn" onclick="isFileExists()">判断文件是否存在-异步</div>
+<div class="btn" onclick="isFileExists_sync()">判断文件是否存在-同步</div>
+
+<div class="btn" onclick="uploadFile()">文件上传功能</div>
+<div class="btn" onclick="downloadFile()">文件下载功能</div>
+<div class="btn" onclick="fileSizeAtPath()">获取缓存文件大小</div>
+<div class="btn" onclick="deleteFileAtPath()">清理缓存数据</div>
+<h1>推送</h1>
+<div class="btn" onclick="openNotification()">弹出系统通知</div>
+<div class="btn" onclick="getApnsToken()">获取IOS Token</div>
+<div class="btn" onclick="registerApns()">注册register方法</div>
+<h1>设备</h1>
+<div class="btn" onclick="makePhoneCall()">打电话</div>
+<div class="btn" onclick="sendMessage()">发短信</div>
+<div class="btn" onclick="changeLanguage()">国际化切换</div>
+<div class="btn" onclick="getSystemInfo()">获取设备信息</div>
+<div class="btn" onclick="getNetworkType()">监听当前网络状态</div>
+<div class="btn" onclick="getNetworkTypeSync()">监听当前网络状态同步方法</div>
+<div class="btn" onclick="updateIPA()">更新app版本</div>
+<div class="btn" onclick="processCommunication()">进程通信</div>
+<div class="btn" onclick="cocopodsTest()">测试Cocopod插件</div>
+<h1>录音</h1>
+<div class="btn" onclick="startRecord()">开始录音</div>
+<div class="btn" onclick="pauseRecord()">暂停录音</div>
+<div class="btn" onclick="resumeRecoder()">恢复录音</div>
+<div class="btn" onclick="stopRecord()">停止录音</div>
+<div class="btn" onclick="startPlay()">开始播放</div>
+<div class="btn" onclick="stopPlay()">停止播放</div>
+<h1>通讯录</h1>
+<div class="btn" onclick="findPhoneConcat()">获取联系人信息</div>
+<div class="btn" onclick="addPhoneContact()">添加联系人信息</div>
+<div class="btn" onclick="editPhoneContact()">修改联系人信息</div>
+<div class="btn" onclick="deletePhoneContact()">删除联系人信息</div>
+<!--<div class="btn" onclick="callAsyn()">JS异步调用原生方法</div>
+<div class="btn" onclick="callSyn()">JS同步调用原生方法</div>
+<div class="btn" onclick="callSynSwift()">调用带有字典参数的方法</div>
+<div class="btn" onclick="callAsynSwift()">Async call(swift)</div>
+<div class="btn" onclick="callNoArgSyn()">Sync call without argument</div>
+<div class="btn" onclick="callNoArgAsyn()">Async call without argument</div>
+<div class="btn" onclick="echoSyn()">echo.syn</div>
+<div class="btn" onclick="echoAsyn()">echo.asyn</div>
+<div class="btn" onclick="callAsyn_()">Stress test，2K times consecutive asynchronous API calls</div>
+<div class="btn" onclick="callNever()">Never call because without @JavascriptInterface
+    annotation<br/>( This test is
+    just for Android ,should be ignored in IOS )
+</div>
+<div class="btn" onclick="callProgress()">call progress <span id='progress'></span></div>
+<div class="btn" onclick="hasNativeMethod('xx')">hasNativeMethod("xx")</div>
+<div class="btn" onclick="hasNativeMethod('testSyn')">hasNativeMethod("testSyn")</div>
+-->
+
+<script>
+// 调用原生拍照方法
+function takePicture() {
+    // 第一个参数为IOS方法名，第二个位传递的参数
+    dsBridge.call("media.takePicture", "Hello", function (ret) {
+        alert(ret)
+    })
+}
+// 调用原生摄像方法
+function takeVideo() {
+    // 第一个参数为IOS方法名，第二个位传递的参数
+    dsBridge.call("media.takeVideo", "Hello", function (ret) {
+        alert(ret)
+    })
+}
+// 调用原生扫码方法
+function openScan() {
+    // 第一个参数为IOS方法名，第二个位传递的参数
+    dsBridge.call("nfc.scanCode", "Hello", function (ret) {
+        alert(ret)
+    })
+}
+// 从相册选择扫码方法
+function scanCodeByAlbum() {
+    // 第一个参数为IOS方法名，第二个位传递的参数
+    dsBridge.call("nfc.scanCodeByAlbum", "Hello", function (ret) {
+        alert(ret)
+    })
+}
+// 调用获取本机地图方法
+function getMaps() {
+    // 第一个参数为IOS方法名，第二个位传递的参数
+    dsBridge.call("map.getMaps", "Hello", function (ret) {
+        alert(ret)
+    })
+}
+// 调用打开地图方法
+function openMap() {
+    obj = {
+        mapType: "baiduMap",
+        lat: 30.480939593957004,
+        lon: 114.41074430883373,
+        address: "新发展A栋",
+        success() {
+            console.log("success")
+        },
+        fail() {
+            console.log("fail")
+        },
+    }
+    // 第一个参数为IOS方法名，第二个位传递的参数
+    dsBridge.call("map.openMap", obj, function (ret) {
+        alert(ret)
+    })
+}
+
+// 调用获取本机地图方法
+function getLocation() {
+    // 第一个参数为IOS方法名，第二个位传递的参数
+    dsBridge.call("location.getLocation", "Hello", function (ret) {
+        alert(ret)
+    })
+}
+
+// 调用获取本机相册方法
+function getAlbum() {
+    // 第一个参数为IOS方法名，第二个位传递的参数
+    dsBridge.call("media.selectPicture", {count:1}, function (ret) {
+        alert(ret)
+    })
+}
+// 打开沙盒文件列表功能
+function chooseFile() {
+    // 第一个参数为IOS方法名，第二个位传递的参数
+    dsBridge.call("file.chooseFile", "Hello", function (ret) {
+        alert(ret)
+    })
+}
+// 预览文件
+function openFile() {
+    // 第一个参数为IOS方法名，第二个位传递的参数
+    let url = "5fa4c90ca9a31a10530197bf.jpg"
+    dsBridge.call("file.openDocument",{filePath:url,FileType:'doc'}, function (ret) {
+        alert(ret)
+    })
+}
+// 往沙盒存入数据 --TEST
+function saveWithFile() {
+    dsBridge.call("file.saveWithFile", "12344422", function (ret) {
+    })
+}
+// 计算缓存数据大小
+function fileSizeAtPath() {
+    dsBridge.call("file.getfileSize", "test", function (ret) {
+    })
+}
+// 清理缓存数据
+function deleteFileAtPath() {
+    dsBridge.call("file.deleteFileAtPath", "test", function (ret) {
+    })
+}
+// 打开本地系统通知
+function openNotification() {
+    // 第一个参数为IOS方法名，第二个位传递的参数
+    dsBridge.call("iosPush.showNotification", "Hello", function (ret) {
+        // alert(ret)
+    })
+}
+// 打电话功能
+function makePhoneCall() {
+    dsBridge.call("device.makePhoneCall", "12344422", function (ret) {
+        alert(ret)
+    })
+}
+// 发短信功能
+function sendMessage() {
+    dsBridge.call("device.sendMessage", "12344422", function (ret) {
+        alert(ret)
+    })
+}
+// 监听当前网络状态
+function getNetworkType() {
+    dsBridge.call("device.getNetworkType", "12344422", function (ret) {
+        alert(ret)
+    })
+}
+function getNetworkTypeSync() {
+    alert(dsBridge.call("device.getNetworkTypeSync", "12344422"))
+}
+// 更新app版本
+function updateIPA() {
+    dsBridge.call("device.updateIPA", "12344422", function (ret) {
+        alert(ret)
+    })
+}
+// 进程通信
+function processCommunication() {
+    dsBridge.call("device.processCommunication", "12344422", function (ret) {
+        alert(ret)
+    })
+}
+// 私有cocopods测试
+function cocopodsTest() {
+    dsBridge.call("origionalCore.testOrangionalCode", "12344422", function (ret) {
+        alert(ret)
+    })
+}
+// 获取APNs token
+function getApnsToken() {
+    dsBridge.call("iosPush.getAPNsToken", "12344422", function (ret) {
+        alert(ret)
+    })
+}
+// 注册IOS方法
+//function registerApns() {
+    dsBridge.register('APNsPush', function (ret) {
+        alert(ret)
+        return ret;
+    })
+//}
+// 调用IOS方法 --TEST
+function testRegisterApns() {
+    dsBridge.call("iosPush.registerApns", "12344422", function (ret) {
+    })
+}
+// 判断文件是否存在 - 异步
+function isFileExists() {
+    let path = "/var/mobile/Containers/Data/Application/A310972D-B5A6-4B37-9E28-5629BDCE2B8B/Documents/123.jpg";
+    dsBridge.call("file.isFileExists",{
+        filePath: path
+    }, function (ret) {
+        alert(ret)
+    })
+}
+// 判断文件是否存在 - 同步
+function isFileExists_sync() {
+    let path = "/var/mobile/Containers/Data/Application/A310972D-B5A6-4B37-9E28-5629BDCE2B8B/Documents/123.jpg";
+    var res = dsBridge.call("file.isFileExists_sync",{
+        filePath: path
+    });
+    alert(res)
+}
+// 文件上传
+function uploadFile() {
+    let path = "/var/mobile/Containers/Data/Application/A310972D-B5A6-4B37-9E28-5629BDCE2B8B/Documents/123.jpg";
+    dsBridge.call("fileTransfer.uploadFile",{
+       key: {
+           url: "url",
+           filePath: "filepath",
+           name: "name",
+           request: "post",
+           formData: "formData"
+       }
+    }, function (ret) {
+    })
+}
+// 文件下载
+function downloadFile() {
+    var res = dsBridge.call("fileTransfer.downloadFile",{
+        filePath: "path"
+    }, function (ret) {
+    })
+}
+
+// 国际化切换
+function changeLanguage() {
+    dsBridge.call("Internationalize.changeLanguage", "12344422", function (ret) {
+        alert(ret)
+    })
+}
+// 获取设备系统信息
+function getSystemInfo() {
+    dsBridge.call("device.getSystemInfo", "12344422", function (ret) {
+        alert(ret)
+    })
+}
+// 录音开始
+function startRecord() {
+    dsBridge.call("record.startRecord",{maxDuration:5000, mFlag:2, audioBitsPerSecond:44100}, function (ret) {
+        alert(ret)
+    })
+}
+// 暂停录音
+function pauseRecord() {
+    dsBridge.call("record.pauseRecord", "12344422", function (ret) {
+        alert(ret)
+    })
+}
+// 恢复录音
+function resumeRecoder() {
+    dsBridge.call("record.resumeRecoder", "12344422", function (ret) {
+        alert(ret)
+    })
+}
+//  停止录音
+function stopRecord() {
+    dsBridge.call("record.stopRecord", "12344422", function (ret) {
+        alert(ret)
+    })
+}
+//  开始播放
+function startPlay() {
+    dsBridge.call("record.startPlay", "12344422", function (ret) {
+        alert(ret)
+    })
+}
+//  停止播放
+function stopPlay() {
+    dsBridge.call("record.stopPlay", "12344422", function (ret) {
+        alert(ret)
+    })
+}
+//  获取通讯录信息
+function findPhoneConcat() {
+    dsBridge.call("concats.findPhoneConcat",{ key: "" }, function (ret) {
+        alert(ret)
+    })
+}
+//  添加联系人到通讯录
+function addPhoneContact() {
+    dsBridge.call("concats.addPhoneContact",{ key: {
+        firstName: "许永霖",
+        mobilePhoneNumber: ["13271886009","15087520985"]
+    } }, function (ret) {
+        alert(ret)
+    })
+}
+//  修改联系人信息
+function editPhoneContact() {
+    dsBridge.call("concats.editPhoneContact",{
+        key:{
+            firstName:"李渊",
+            mobilePhoneNumber:["13465281976", "13787277382"],
+            ID:"418939F4-3509-462B-8BE6-6E4FCA4CF513:ABPerson"
+        }
+    }, function (ret) {
+        alert(ret)
+    })
+}
+//  修改联系人信息
+function deletePhoneContact() {
+    dsBridge.call("concats.deletePhoneContact",{
+        key: "C7A0A5D8-782A-4ACA-B52A-1C05BF4B7179:ABPerson"
+    }, function (ret) {
+        alert(ret)
+    })
+}
+// **********************&&&&&&&&&&&&&&&*******************************
+// **********************&&&&&&&&&&&&&&&*******************************
+// **********************&&&&&&&&&&&&&&&*******************************
+// **********************&&&&&&&&&&&&&&&*******************************
+
+//  MARK:- JS异步调用原生方法
+function callAsyn() {
+    dsBridge.call("swift.testAsyn","心引力", function (v) {
+        alert(v)
+    })
+}
+
+function callSynSwift() {
+    alert(dsBridge.call("swift.testSyn", "hello"))
+}
+
+function callAsynSwift() {
+    dsBridge.call("swift.testAsyn","hello", function (v) {
+      alert(v)
+    })
+}
+
+function callAsyn_() {
+    for (var i = 0; i < 2000; i++) {
+        dsBridge.call("testAsyn",  "js+" + i, function (v) {
+            if (v == "js+1999 [ asyn call]") {
+                alert("All tasks completed!")
+            }
+        })
+    }
+}
+
+function callNoArgSyn() {
+    alert(dsBridge.call("testNoArgSyn"));
+}
+
+function callNoArgAsyn() {
+    dsBridge.call("testNoArgAsyn", function (v) {
+        alert(v)
+    });
+}
+
+function callNever() {
+    alert(dsBridge.call("testNever", {msg: "testSyn"}))
+}
+
+function echoSyn() {
+    // call function with namespace
+    var ret=dsBridge.call("echo.syn",{msg:" I am echoSyn call", tag:1});
+    alert(JSON.stringify(ret))
+}
+
+function echoAsyn() {
+    // call function with namespace
+    dsBridge.call("echo.asyn",{msg:" I am echoAsyn call",tag:2},function (ret) {
+        alert(JSON.stringify(ret));
+    })
+}
+
+function callProgress() {
+    dsBridge.call("callProgress", function (value) {
+        if(value==0) value="";
+        document.getElementById("progress").innerText = value
+    })
+}
+
+function hasNativeMethod(name) {
+    alert(dsBridge.hasNativeMethod(name))
+}
+
+
+dsBridge.register('addValue', function (r, l) {
+    return r + l;
+})
+
+dsBridge.registerAsyn('append', function (arg1, arg2, arg3, responseCallback) {
+    responseCallback(arg1 + " " + arg2 + " " + arg3);
+})
+
+dsBridge.registerAsyn('showJson', function (arg1, responseCallback) {
+    responseCallback(arg1);
+})
+
+dsBridge.registerAsyn('showResult', function (arg1, responseCallback) {
+      var json = {
+        "result" : {
+        "value": "hahahah",
+        "error": "haha"
+        }
+      }
+      responseCallback(json);
+})
+
+dsBridge.registerAsyn('startTimer', function (responseCallback) {
+    var t = 0;
+    var timer = setInterval(function () {
+        if (t == 5) {
+            responseCallback(t)
+            clearInterval(timer)
+        } else {
+            // if the 2nd argument is false,  the java callback handler will be not removed!
+            responseCallback(t++, false)
+        }
+    }, 1000)
+
+})
+
+// namespace test for syn functions
+dsBridge.register("syn", {
+    tag: "syn",
+    addValue:function (r,l) {
+        return r+l;
+    },
+    getInfo: function () {
+        return {tag: this.tag, value:8}
+    }
+})
+
+// namespace test for asyn functions
+dsBridge.registerAsyn("asyn", {
+    tag: "asyn",
+    addValue:function (r,l, responseCallback) {
+        responseCallback(r+l);
+    },
+    getInfo: function (responseCallback) {
+        responseCallback({tag: this.tag, value:8})
+    }
+})
+
+</script>
+</body>
+</html>

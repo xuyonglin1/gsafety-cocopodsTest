@@ -1,0 +1,52 @@
+/* 
+  Localizable.strings
+  mo-vol-ios
+  本地文件国际化
+  Created by 许永霖 on 2020/11/20.
+  Copyright © 2020 Gsafety. All rights reserved.
+*/
+
+/**
+ * MARK: album 相册内容国际化
+ *
+ */
+album_tips = "提示";
+album_noPermissionPrompt = "您尚未授权相册权限，请先到手机设置中开启相册权限.";
+album_cancel = "取消";
+album_confirm = "确定";
+album_settings = "去设置";
+album_maxSelectpictures = "最多只能选择%d张照片";
+album_allPhotos = "所有照片";
+album_originalPicture = "原图";
+album_complete = "完成";
+album_preview = "预览";
+album_noVideoPermission = "请在iphone的“设置-隐私-相机”选项中，允许应用访问你的相机权限";
+album_noAudioPermission = "请在iphone的“设置-隐私-麦克风”选项中，允许应用访问你的麦克风权限";
+/**
+ * MARK: Internationalize 国际化部分国际化
+ *
+ */
+inter_changeSuc = "语言切换成功";
+
+/**
+ * MARK: 扫码国际化
+ *
+ */
+scan_scanCode = "扫码";
+scan_autoScanTips = "对准二维码，即可自动扫描";
+scan_noLocationPermission = "无位置权限";
+scan_noLocationPermissionMessage = "请在iphone的“设置-隐私-定位”选项中，允许应用访问你的位置";
+scan_cancel = "取消";
+/**
+ * MARK: 定位 国际化
+ *
+ */
+local_cancel = "取消";
+local_confirm = "确定";
+/**
+ * MARK: 文件 国际化
+ *
+ */
+file_cancel = "取消";
+file_edit = "编辑";
+file_complete = "完成";
