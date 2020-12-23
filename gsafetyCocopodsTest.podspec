@@ -9,7 +9,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "gsafetyCocopodsTest"
-  spec.version      = "0.0.4"
+  spec.version      = "0.0.6"
   spec.summary      = "this is a test of gsafety-cocopodsTest."
   spec.description  = <<-DESC
 			I just wants test it, I do not know weather it will success
