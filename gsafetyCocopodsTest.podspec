@@ -9,7 +9,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "gsafetyCocopodsTest"
-  spec.version      = "0.0.10"
+  spec.version      = "0.0.11"
   spec.summary      = "this is a test of gsafety-cocopodsTest."
   spec.description  = <<-DESC
 			I just wants test it, I do not know weather it will success
@@ -29,9 +29,9 @@ Pod::Spec.new do |spec|
   
   spec.resources    = 'Source/Resources/Image/*.{jpg,mp4,png}'
   spec.resource_bundles = { 
-	'MediaAlbum' => ['Source/Sections/Media/Album/AlbumPlug/PhotoPickerResources.bundle/*.{png}'],
-	'MediaCamera' => ['Source/Sections/Media/Camera/VideoPlug/WMCameraResource.bundle/*.{png}'],
-	'SandboxFile' => ['Source/Sections/File/SandboxFileManager/image/WXXImage.bundle/*.{png}']
+	'MediaAlbum' => ['Source/Sections/Media/Album/AlbumPlug/PhotoPickerResources.bundle'],
+	'MediaCamera' => ['Source/Sections/Media/Camera/VideoPlug/WMCameraResource.bundle'],
+	'SandboxFile' => ['Source/Sections/File/SandboxFileManager/image/WXXImage.bundle']
   }
 
   #  依赖frameworks
