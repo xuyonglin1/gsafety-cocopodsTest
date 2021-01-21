@@ -1,6 +1,0 @@
-framework module gsafetyCocopodsTest {
-  umbrella header "gsafetyCocopodsTest-umbrella.h"
-
-  export *
-  module * { export * }
-}

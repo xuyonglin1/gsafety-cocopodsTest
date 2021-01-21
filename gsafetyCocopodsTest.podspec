@@ -9,7 +9,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "gsafetyCocopodsTest"
-  spec.version      = "0.0.9"
+  spec.version      = "0.0.10"
   spec.summary      = "this is a test of gsafety-cocopodsTest."
   spec.description  = <<-DESC
 			I just wants test it, I do not know weather it will success
@@ -23,13 +23,21 @@ Pod::Spec.new do |spec|
   spec.platform     = :ios, "12.0"
   spec.swift_version = "5"
 
-  spec.source       = { :git => "https://github.com/xuyonglin1/gsafety-cocopodsTest.git", :tag => "0.0.9" }
+  spec.source       = { :git => "https://github.com/xuyonglin1/gsafety-cocopodsTest.git", :tag => spec.version }
 
+  spec.source_files  = "Source/**/*.{h,swift}"
+  
+  spec.resources    = 'Source/Resources/Image/*.{jpg,mp4,png}'
+  spec.resource_bundles = { 
+	'MediaAlbum' => ['Source/Sections/Media/Album/AlbumPlug/PhotoPickerResources.bundle/*.{png}'],
+	'MediaCamera' => ['Source/Sections/Media/Camera/VideoPlug/WMCameraResource.bundle/*.{png}'],
+	'SandboxFile' => ['Source/Sections/File/SandboxFileManager/image/WXXImage.bundle/*.{png}']
+  }
 
-  spec.source_files  = "CocopodTest/*","CocopodTest/**","CocopodTest/**/*", "CocopodTest/**/**/*", "CocopodTest/**/**/**/*", "CocopodTest/**/**/**/**/*", "CocopodTest/**/**/**/**/**/*",
-"CocopodTest/**/**/**/**/**/**/*","CocopodTest/**/**/**/**/**/**/**/*"
-  # spec.exclude_files = "Classes/Exclude"
-
-  # spec.public_header_files = "Classes/**/*.h"
+  #  依赖frameworks
+  spec.frameworks = 'Foundation','UIKit','CoreLocation','Photos', 'AVFoundation', 'MessageUI'
+  spec.dependency 'Alamofire'
+  spec.dependency 'HandyJSON'
+  spec.dependency 'SnapKit'
 
 end
