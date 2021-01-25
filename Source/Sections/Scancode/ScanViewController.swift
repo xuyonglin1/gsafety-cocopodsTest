@@ -25,9 +25,9 @@ class ScanViewController: UIViewController,AVCaptureMetadataOutputObjectsDelegat
     var previewLayer: AVCaptureVideoPreviewLayer?
     var scanTimer: Timer?
     //边框
-    lazy var borderView: UIImageView = UIImageView(image: UIImage(named:"ty_qrcode_bg"))
+    lazy var borderView: UIImageView = UIImageView(image: UIImage.getScanImage(named:"ty_qrcode_bg"))
     //line
-    lazy var scanLineView: UIImageView = UIImageView(image: UIImage(named: "ty_qrcode_line"))
+    lazy var scanLineView: UIImageView = UIImageView(image: UIImage.getScanImage(named: "ty_qrcode_line"))
     private let borderWidth:CGFloat =   400
     private let topMargin: CGFloat =  230
 
@@ -219,5 +219,25 @@ class ScanViewController: UIViewController,AVCaptureMetadataOutputObjectsDelegat
         self.completeBlock(self.scanResult!)
 //        dismiss(animated: true) {
 //        }
+    }
+}
+public extension Bundle {
+    
+    class func scanBuldle() -> Bundle {
+        var bundle:Bundle? = nil;
+        if bundle == nil {
+            let path = Bundle.init(for: ScanViewController.self).path(forResource: "scanImage", ofType: "bundle")
+            bundle = Bundle.init(path: path!)
+        }
+        return bundle!
+    }
+    
+}
+extension UIImage{
+    class func getScanImage(imageName:String) -> UIImage?{
+        if let imagePath = Bundle.scanBuldle().path(forResource: imageName, ofType: "png") {
+            return UIImage.init(contentsOfFile: imagePath)?.withRenderingMode(.alwaysOriginal)
+        }
+        return nil
     }
 }
